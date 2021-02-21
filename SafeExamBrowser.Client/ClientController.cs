@@ -814,8 +814,7 @@ namespace SafeExamBrowser.Client
 
 			if (!communication.Success)
 			{
-				//
-				logger.Error("Failed to communicate shutdown request to the runtime!");
+                logger.Error("Failed to communicate shutdown request to the runtime!");
 				messageBox.Show(TextKey.MessageBox_QuitError, TextKey.MessageBox_QuitErrorTitle, icon: MessageBoxIcon.Error);
 			}
 

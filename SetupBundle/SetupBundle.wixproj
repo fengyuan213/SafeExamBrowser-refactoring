@@ -82,13 +82,5 @@
 	<Target Name="AfterBuild">
 	</Target>
 	-->
-  <PropertyGroup>
-    <SignOutput>true</SignOutput>
-  </PropertyGroup>
-  <Target Name="SignBundleEngine">
-    <Exec Command="signtool sign /sm /tr http://timestamp.digicert.com /td sha256 /fd sha256 &quot;@(SignBundleEngine)&quot;" />
-  </Target>
-  <Target Name="SignBundle">
-    <Exec Command="signtool sign /sm /tr http://timestamp.digicert.com /td sha256 /fd sha256 &quot;@(SignBundle)&quot;" />
-  </Target>
+ 
 </Project>

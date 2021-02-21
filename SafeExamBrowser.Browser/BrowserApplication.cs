@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 using CefSharp;
 using CefSharp.WinForms;
 using SafeExamBrowser.Applications.Contracts;
@@ -271,8 +272,12 @@ namespace SafeExamBrowser.Browser
 
 		private void InitializeProxySettings(CefSettings cefSettings)
 		{
+			
 			if (settings.Proxy.Policy == ProxyPolicy.Custom)
 			{
+
+				//MessageBox.Show($"Proxy Enabled/n{settings.Proxy.AutoConfigure}|{settings.Proxy.AutoConfigureUrl}");
+
 				if (settings.Proxy.AutoConfigure)
 				{
 					cefSettings.CefCommandLineArgs.Add("proxy-pac-url", settings.Proxy.AutoConfigureUrl);
@@ -299,6 +304,10 @@ namespace SafeExamBrowser.Browser
 
 					cefSettings.CefCommandLineArgs.Add("proxy-server", string.Join(";", proxies));
 				}
+			}
+			else
+			{
+				//MessageBox.Show("Using System Proxy");
 			}
 		}
 
@@ -367,7 +376,7 @@ namespace SafeExamBrowser.Browser
 				DeleteCookies();
 			}
 
-			nativeMethods.EmptyClipboard();
+			//nativeMethods.EmptyClipboard();
 			CreateNewInstance();
 			logger.Info("Successfully reset browser.");
 		}
